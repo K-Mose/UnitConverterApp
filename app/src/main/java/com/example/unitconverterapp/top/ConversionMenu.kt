@@ -26,7 +26,8 @@ import com.example.unitconverterapp.Conversion
 @Composable
 fun ConversionMenu(
     list: List<Conversion>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    convert: (Conversion) -> Unit
 ) {
     var displayText by remember {mutableStateOf("Select the Conversion Type")}
     var textFiledSize by remember { mutableStateOf(Size.Zero)} // To assign the dropdown then same width as TextField
@@ -63,6 +64,7 @@ fun ConversionMenu(
                 DropdownMenuItem(onClick = {
                     displayText = conversion.description
                     expanded = false
+                    convert(conversion)
                 }) {
                     Text(text = conversion.description,
                     fontSize = 24.sp,
