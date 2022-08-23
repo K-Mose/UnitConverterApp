@@ -1,8 +1,7 @@
-package com.example.unitconverterapp.top
+package com.example.unitconverterapp.compose.top
 
 import android.content.Context
 import android.widget.Toast
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -15,11 +14,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.unitconverterapp.Conversion
-import com.example.unitconverterapp.ui.theme.UnitConverterAppTheme
+import com.example.unitconverterapp.data.Conversion
 
 @Composable
 fun InputBlock(
