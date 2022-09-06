@@ -1,4 +1,4 @@
-package com.example.unitconverterapp
+package com.example.unitconverterapp.compose.converter
 
 import android.util.Log
 import androidx.compose.runtime.Composable
@@ -6,9 +6,9 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import com.example.unitconverterapp.data.Conversion
-import com.example.unitconverterapp.histroy.ResultBlock
-import com.example.unitconverterapp.compose.top.ConversionMenu
-import com.example.unitconverterapp.compose.top.InputBlock
+import com.example.unitconverterapp.compose.converter.top.ResultBlock
+import com.example.unitconverterapp.compose.converter.top.ConversionMenu
+import com.example.unitconverterapp.compose.converter.top.InputBlock
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
