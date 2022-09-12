@@ -1,10 +1,7 @@
 package com.example.unitconverterapp.compose.converter
 
 import android.util.Log
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import com.example.unitconverterapp.data.Conversion
 import com.example.unitconverterapp.compose.converter.top.ResultBlock
 import com.example.unitconverterapp.compose.converter.top.ConversionMenu
@@ -15,11 +12,16 @@ import java.text.DecimalFormat
 @Composable
 fun TopScreen(
     list: List<Conversion>,
+    selectedConversion: MutableState<Conversion?>,
+    inputText: MutableState<String>,
+    typedValue: MutableState<String>,
     save: (String, String) -> Unit
 ) {
-    val selectedConversion: MutableState<Conversion?> = remember{ mutableStateOf(null)}
-    val inputText: MutableState<String> = remember {mutableStateOf("")}
-    val typedValue = remember {mutableStateOf("0.0")}
+
+    var toSave by remember {
+        mutableStateOf(false)
+    }
+
     ConversionMenu(list = list) {
         selectedConversion.value = it
         typedValue.value = "0.0"
@@ -29,6 +31,7 @@ fun TopScreen(
         InputBlock(conversion = it, inputText = inputText) { input ->
             Log.i("MYTAG", "User Typed $input")
             typedValue.value = input
+            toSave = true
         }
     }
 
@@ -42,7 +45,10 @@ fun TopScreen(
             }
         val message1 = "${typedValue.value} ${selectedConversion.value!!.convertFrom} is Equal to"
         val message2 = "$result ${selectedConversion.value!!.convertTo}"
-        save(message1, message2)
+        if (toSave) {
+            save(message1, message2)
+            toSave = false
+        }
         ResultBlock(message1 = message1, message2 = message2)
     }
 }

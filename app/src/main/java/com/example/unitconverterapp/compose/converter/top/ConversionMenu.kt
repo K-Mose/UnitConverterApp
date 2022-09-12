@@ -13,6 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.layout.onGloballyPositioned
@@ -29,7 +30,7 @@ fun ConversionMenu(
     modifier: Modifier = Modifier,
     convert: (Conversion) -> Unit
 ) {
-    var displayText by remember {mutableStateOf("Select the Conversion Type")}
+    var displayText by rememberSaveable {mutableStateOf("Select the Conversion Type")}
     var textFiledSize by remember { mutableStateOf(Size.Zero)} // To assign the dropdown then same width as TextField
     var expanded by remember { mutableStateOf(false)}
 
